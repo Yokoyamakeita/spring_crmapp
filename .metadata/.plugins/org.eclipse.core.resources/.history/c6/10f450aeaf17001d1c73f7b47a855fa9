@@ -1,0 +1,17 @@
+package com.example.repository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class HelloRepository {
+
+	@Autowired
+	private jdbcTemplete jdbcTemplete;
+	
+	public Map<String,Object> findById(string id){
+		String query = "select * from employee where = ?";
+		
+		Map<String,Object> employee = jdbcTemplete.queryForMap(query,id);
+	}
+}

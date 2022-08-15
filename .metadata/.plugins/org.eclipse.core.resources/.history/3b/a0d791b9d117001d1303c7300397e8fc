@@ -1,0 +1,15 @@
+package com.example.service.impl;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl {
+
+	@Autowired
+	private UserMapper mapper;
+	
+	@Override()
+	public void signup(MUser user) {
+		
+	}
+}

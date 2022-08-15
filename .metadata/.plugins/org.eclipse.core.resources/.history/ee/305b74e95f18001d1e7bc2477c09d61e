@@ -1,0 +1,8 @@
+package com.example.form;
+
+@Data
+public class UserListForm {
+
+	private String userId;
+	private String UserName;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+<meta charset="UTF-8" th:remove="tag">
+</head>
+<body>
+
+	<!-- サイドバーの表示 -->
+	<div layout:fragment="sidebar"
+		th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+	<!-- コンテンツの表示 -->
+	<main layout:fragment="content" class="offcanvas-outside bg-light">
+		<div class="container-fluid">
+			<!-- トグルボタン -->
+			<div th:replace="~{fragments/sidebar :: toggler}"></div>
+
+			<div class="row">
+				<div class="col">
+
+					<div class="card shadow">
+						<div class="card-header">
+							<h6 class="text-navy my-2">案件新規登録</h6>
+						</div>
+
+
+						<div class="card-body center-block">
+							<form th:action="@{/case/add}" th:object="${case}"
+								method="post">
+
+
+								<div class="mb-3">
+									<div class="d-grid gap-2 col-4 mx-auto"
+										style="margin-top: 30px">
+										<label class="form-label"> <span
+											class="badge bg-danger">必須</span> 取引会社様
+										</label> <select class="form-select" th:field="*{company}">
+											<th:block th:each="company:${@companyRepository.findAll()}">
+												<option th:value="${company.id}"
+													th:text="${company.companyName}"></option>
+											</th:block>
+										</select>
+									</div>
+								</div>
+
+
+								<div class="mb-3">
+									<div class="d-grid gap-2 col-4 mx-auto"
+										style="margin-top: 30px">
+										<label for="username" class="form-label"> <span
+											class="badge bg-danger">必須</span> 案件名
+										</label> <input class="form-control col-xs-4" type="text"
+											th:errorclass="is-invalid" th:field="*{name}">
+										<div class="invalid-feedback" th:errors="*{name}"></div>
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<div class="d-grid gap-2 col-4 mx-auto"
+										style="margin-top: 30px">
+										<label for="indeutry" class="form-label"> <span
+											class="badge bg-danger">必須</span> 内容
+										</label>
+										 <textarea rows="5" cols="80" 
+										 class="form-control" id="inputTextarea" th:errorclass="is-invalid"  th:field="*{explanation}"></textarea>
+						
+										<div class="invalid-feedback" th:errors="*{explanation}"></div>
+									</div>
+								</div>
+
+
+							
+
+
+								<div class="d-grid gap-2 col-4 mx-auto"
+									style="margin-top: 50px; margin-bottom: 30px">
+									<button class="btn btn-primary" type="submit">登録</button>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+package com.example.aspect;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
+
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.springframework.dao.DataAccessException;
+
+@ControllerAdvice
+public class GlobalControllAdvice {
+	
+	@ExceptionHandler(DataAccessException.class)
+	public String dataAccessExceptionHandler(DataAccessException e,Model model) {
+		
+	}
+
+}

@@ -1,0 +1,13 @@
+user.signup.title = signup
+user.signup.btn = Signup
+userid = User ID
+password = Password
+userName = username
+birthday = birthday
+male = male
+age = age
+female = female
+gender = gender
+
+message = please input your infomention
+companycode = company code

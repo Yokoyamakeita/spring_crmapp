@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/user/login.css}">
+<title>ログイン</title>
+</head>
+<body>
+
+<div class="text-center">
+	<div class="form-signin">
+    <form th:action="@{/login}" method="post" class="form-login">
+        <h2>～簡単なCRMサイト～</h2>
+        <h4>ログイン画面</h4>
+        <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null" th:text="${session['SPRING_SECURITY_LASTEXCEPTION'].message}" class="text-danger">
+        ログインエラーメッセージ
+        </p>
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="ユーザID" name="userId">
+            <label for="userId" class="sr-only">userID</label>
+        </div>
+
+        <div class="form-floating">
+            <input type="text" name="password" placeholder="パスワード" class="form-control">
+            <label for="password" class="sr-only">パスワード</label>
+        </div>
+        <input type="submit" value="ログイン" class="w-100 btn btn-lg btn-primary">
+    </form>
+
+    <a th:href="@{/user/signup}">新規登録はこちら</a>
+
+
+	<script th:src ="@{/webjars/jquery/jquery.min.js}" defer></script> 
+	<script th:src ="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+	</div>
+</div>
+</body>
+</html>

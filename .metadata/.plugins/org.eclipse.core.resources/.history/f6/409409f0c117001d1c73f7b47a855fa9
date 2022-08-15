@@ -1,0 +1,7 @@
+package com.example.controller;
+
+@Controller
+@RequestMapping("/")
+public class UserListController {
+
+}

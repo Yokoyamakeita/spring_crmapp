@@ -1,0 +1,28 @@
+user.signup.title = ユーザ登録
+user.signup.btn = ユーザ登録
+userId = ユーザID
+password = パスワード
+userName = ユーザ名
+birthday = 生年月日
+age = 年齢
+male = 男性
+female = 女性
+gender = 性別
+
+message = ユーザ登録を入力してください
+companycode = 会社認証コード
+
+AbstractUserDetailsAuthenticationProvider.locked = アカウントはロックされています
+
+AbstractUserDetailsAuthenticationProvider.disabled = アカウントは使用できません
+
+
+AbstractUserDetailsAuthenticationProvider.expired = アカウントの有効期限が切れています
+
+
+AbstractUserDetailsAuthenticationProvider.credentialsExpired = パスワードの有効期限が切れています
+
+
+AbstractUserDetailsAuthenticationProvider.badCredentials = IDまたはパスワードが間違っています
+
+

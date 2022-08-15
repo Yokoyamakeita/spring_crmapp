@@ -1,0 +1,15 @@
+package com.example.aspect;
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class GlobalControllAdvice {
+	
+	@ExceptionHandler(DataAccessException.class)
+	public String dataAccessExceptionHandler(DataAccessException e,Model model) {
+		
+	}
+
+}

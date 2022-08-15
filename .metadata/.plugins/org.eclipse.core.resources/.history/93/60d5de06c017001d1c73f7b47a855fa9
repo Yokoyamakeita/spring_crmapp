@@ -1,0 +1,6 @@
+package com.example.form;
+
+@GroupSequence({ValidGroup1.class,ValidGroup2.class});
+public class GroupOrder {
+
+}

@@ -1,0 +1,25 @@
+package com.example.controller;
+
+import javax.transaction.Transactional;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
+
+@SpringBootTest
+@AutoConfigureMockMvc
+@Transactional
+public class SecurityControllerTest {
+
+	@Autowired
+	MockMvc mockMvc;
+	
+	@Test
+	@DisplayName("登録エラーがある場合、エラー表示することを期待します")
+	void whenThereIsRegistrationError_expectToSeeErrors() throws Exception{
+		mockMvc.perform(post("/register").flash("user",new SiteUser()))
+	}
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}">
+<head>
+  <meta charset="UTF-8" th:remove="tag">
+</head>
+<body>
+
+  <!-- サイドバーの表示 -->
+  <div layout:fragment="sidebar"
+    th:replace="~{fragments/sidebar :: sidebar}">
+  </div>
+
+  <!-- コンテンツの表示 -->
+  <main layout:fragment="content"
+    class="offcanvas-outside bg-light">
+    <div class="container-fluid">
+      <!-- トグルボタン -->
+      <div th:replace="~{fragments/sidebar :: toggler}">
+      </div>
+
+      <div class="row">
+        <div class="col">
+
+          <div class="card shadow">
+            <div class="card-header">
+              <h6 class="text-navy my-2">
+                案件一覧
+              </h6>
+            </div>
+            <div class="d-grid gap-2 d-md-block" style=margin-top:10px;margin-left:20px>
+            <a th:href="@{/case/add}" class="btn btn-primary"><i class="bi bi-check-square-fill"></i>案件新規追加</a>
+            </div>
+            <div class="card-body table-responsive">
+              <table id="user-table" class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>取引会社様</th>
+                    <th>案件名</th>
+                    <th>内容</th>
+                    <th>進捗</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="cases : ${cases}" th:object="${cases}">
+                    <td th:text="*{id}"></td>
+                    <td th:text="*{company.companyName}"></td>
+                    <td th:text="*{name}"></td>
+                    <td th:text="*{explanation}"></td>
+                    <th th:text="*{result} ? 完了 : 未完了 " />
+                    <td><th:block th:if="*{!result}">
+                    	<a th:href="@{/case/edit/{id}(id=*{id})}" class="btn btn-info"><i class="bi bi-pencil-fill"></i>進捗を完了にする</a>
+                    </th:block>
+                	<th:block th:if="*{result}">
+                		<p>お疲れ様でした♪</p>
+                	</th:block></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+   
+  </main>
+
+</body>
+</html>

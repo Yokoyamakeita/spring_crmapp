@@ -1,0 +1,17 @@
+package com.example.controller;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+@Slf4j
+public class LogoutController {
+
+	@PostMapping("/logout")
+	public String postLogout() {
+		log.info("logout");
+		return "redirect:/login";
+	}
+}

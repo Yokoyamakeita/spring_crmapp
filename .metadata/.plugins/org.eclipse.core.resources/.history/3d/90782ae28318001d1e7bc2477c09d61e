@@ -1,0 +1,50 @@
+package com.example.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
+
+import com.example.domain.user.model.MUser;
+import com.example.service.UserService;
+
+@Service
+public class UserDetailsServiceImpl implements UserDetailsService{
+
+	@Autowired
+	private UserService service;
+	
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) {
+		MUser loginUser = service.getLoginUser(username);
+		
+		if(loginUser == null) {
+			throw new UsernameNotFoundException("user not found");
+		}
+	}
+	
+	@Override
+	public List<MUser> getUsers(MUser user){
+		return mapper.findMany(user);
+	}
+	
+	@Override
+	public MUser getUserOne(String userId) {
+		return mapper.findOne(userId);
+	}
+	
+	@Override
+	public void UpdateUserOne(String userId,String password,String userName) {
+		
+		String encryptPassword = encoder.encode(password);
+		mapper.updateOne(userId, encryptPassword, userName);
+	}
+	
+	@Override
+	public void deleteUserOne(String userId) {
+		int count = mapper.deleteOne(userId);
+	}
+}

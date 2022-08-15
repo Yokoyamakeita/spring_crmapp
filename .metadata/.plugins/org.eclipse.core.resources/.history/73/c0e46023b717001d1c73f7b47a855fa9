@@ -1,0 +1,9 @@
+package com.example.service;
+
+@Service
+public class UserApplicationService {
+
+	Map<String,Integer> getGenderMap(){
+		
+	}
+}

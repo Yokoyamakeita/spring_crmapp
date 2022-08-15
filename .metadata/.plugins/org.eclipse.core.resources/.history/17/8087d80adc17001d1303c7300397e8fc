@@ -1,0 +1,8 @@
+package com.example.controller;
+
+
+@Controller
+@RequestMapping("/user")
+public class UserDetailController {
+
+}

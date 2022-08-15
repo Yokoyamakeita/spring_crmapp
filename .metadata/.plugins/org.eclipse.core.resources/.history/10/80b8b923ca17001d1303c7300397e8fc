@@ -1,0 +1,6 @@
+package com.example.mapper;
+
+@Mapper
+public class UserMapper {
+
+}

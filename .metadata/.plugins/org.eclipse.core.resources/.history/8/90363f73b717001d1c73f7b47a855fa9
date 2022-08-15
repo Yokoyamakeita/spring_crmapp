@@ -1,0 +1,7 @@
+package com.example.controller;
+
+
+@Controller
+public class LoginController {
+
+}

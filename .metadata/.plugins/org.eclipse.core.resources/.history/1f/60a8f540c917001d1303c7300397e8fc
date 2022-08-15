@@ -1,0 +1,17 @@
+insert into employee(id,name,age) 
+values('1','tom',30);
+
+insert into m_user(user_id,password,user_name,birthday,age,gender,department_id,role) 
+values('keita@test.com','password','システム管理者','2000-01-01',20,1,1,'ROLE_ADMIN'),
+('keita2@test.com','password','システムユーザ1','2000-01-01',21,2,2,'ROLE_GENERAL');
+
+insert into m_department(department_id,department_name)
+values
+(1,'システム管理者'),
+(2,'営業部');
+
+insert into t_salary(user_id,year_month,salay,)
+values
+('keita2@test.com','2020/11',280000),
+('keita2@test.com','2020/12',290000),
+('keita2@test.com','2021/01',300000);

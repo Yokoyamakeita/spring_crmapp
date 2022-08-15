@@ -1,0 +1,18 @@
+package com.example.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.model.Employee;
+import com.example.repository.HelloRepository;
+
+@Service
+public class HelloService {
+
+	@Autowired
+	private HelloRepository repositpry;
+	
+	public Employee getEmployee(String id) {
+		
+	}
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+  <!-- サイドバー -->
+  <div th:fragment="sidebar" class="bar">
+    <div class="offcanvas offcanvas-start"
+      data-bs-scroll="true"
+      data-bs-backdrop="false"
+      tabindex="-1"
+      id="offcanvasScrolling"
+      aria-labelledby="offcanvasScrollingLabel">
+      <nav class="navbar-dark bg-image text-white h-100">
+
+        <div class="offcanvas-header">
+          <h4 class="offcanvas-title" style="color:black">
+            <a th:href="@{/}" class="text-white"  ><div style="color:black">
+              <span class="d-inline-block me-1"
+                style="transform: rotate(-15deg)">
+                <i class="bi bi-credit-card-2-front-fill fs-3">
+                </i>
+              </span>
+              CRMサイト</div>
+            </a>
+          </h4>
+        </div>
+        
+        <div class="offcanvas-body pt-0">
+        <hr class="mt-1">
+        <p >ログイン中のユーザ <i class="bi bi-person"></i></p>
+        <p th:text="${username} + ' / ' + ${role}"/>
+         
+         </div>
+
+        <div class="offcanvas-body pt-0">
+          <hr class="mt-1">
+          <ul class="navbar-nav">
+            
+            <!-- ログイン情報の下に、「ユーザ一覧」を追加します -->
+            <li class="nav-item">
+              <a th:href="@{/admin/list}" class="nav-link text-white"><div style="color:black">
+                <i class="bi bi-table me-2"></i>
+                社員一覧
+                </div>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a th:href="@{/company/list}" class="nav-link text-white"><div style="color:black">
+                <i class="bi bi-shop me-2"></i>
+                取引先企業
+                </div>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a th:href="@{/company/user}" class="nav-link text-white"><div style="color:black">
+                <i class="bi bi-people-fill me-2"></i>
+                取引先様
+                </div>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a th:href="@{/case}" class="nav-link text-white"><div style="color:black">
+               	<i class="bi bi-window-plus me-2"></i>
+               	案件一覧
+                </div>
+              </a>
+            </li>
+            
+           
+            <li class="nav-item" >
+              <a th:href="@{/logout}" class="nav-link text-white"><div style="color:black">
+                <i class="bi bi-box-arrow-right me-2"></i>
+                ログアウト</div>
+              </a>
+            </li>
+          </ul>
+ <!--<li sec:authorize="hasAuthority('ROLE_ADMIN')" class="nav-item"> -->
+          <hr>
+          <!-- 閉じるボタン(画面が小さい時に表示) -->
+          <div class="text-center d-lg-none">
+            <button type="button" class="btn-circle btn-light"
+              data-bs-dismiss="offcanvas" aria-label="Close">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- サイドバー折りたたみ時のトグルボタン -->
+  <div th:fragment="toggler">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasScrolling"
+          aria-controls="offcanvasScrolling"
+          aria-expanded="false"
+          aria-label="Toggle offcanvas">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+</body>
+</html>

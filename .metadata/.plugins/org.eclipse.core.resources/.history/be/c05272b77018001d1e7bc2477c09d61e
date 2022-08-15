@@ -1,0 +1,8 @@
+package com.example.aspect;
+
+@Aspect
+@Component
+@Slf4j
+public class LogAspect {
+
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="UTF-8">
+<title>helloworld</title>
+</head>
+<body>
+	
+	
+	<h1>deta</h1>
+	
+	<table>
+	<tr>
+	<td>ID</td>
+	<td td:text="${employee.employeeId}"></td>
+	</tr>
+	<tr>
+	<td>NAME</td>
+	<td td:text="${employee.employeeName}"></td>
+	</tr>
+	<tr>
+	<td>AGE</td>
+	<td td:text="${employee.employeeAge}"></td>
+	</tr>
+	
+	</table>
+	
+	
+</body>
+</html>

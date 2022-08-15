@@ -1,0 +1,50 @@
+package com.example.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import javax.transaction.Transactional;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import com.example.model.SiteUser;
+import com.example.repository.SiteUserRepository;
+
+@SpringBootTest
+@Transactional
+class UserDetailsServiceImplTest {
+	
+	@Autowired
+	SiteUserRepository repository;
+	
+	@Autowired
+	UserDetailServiceImpl service;
+
+	@Test
+	@DisplayName("ユーザ名が存在する時、ユーザ詳細を取得することを期待します")
+	void whenUsernameExists_expextToGetUserDetails() {
+		var user = new SiteUser();
+		user.setUsername("hadana");
+		user.setPassword("password");
+		user.setEmail("hadana@exmaple.com");
+		
+		user.setRole(Role.USER.name());
+		repository.save(user);
+		
+		var actual = service.loadUserByUsername("hanada");
+		
+		assertEquals(user.getUsername(),actual.getUsername());
+	}
+	
+	@Test
+	@DisplayName("ユーザ名が存在しない場合、例外をスローします")
+	
+	void whenUsernameDoesNotExist_throwException() {
+		assertThrows(UsernameNotFoundException.class,()->service.loadUserByUsername("takeda"));
+		fail("まだ実装されていません");
+	}
+
+}

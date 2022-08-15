@@ -1,0 +1,5 @@
+create table if not exists employee1(
+	id varchar(50) primary key,
+	name varchar(50),
+	age int
+);

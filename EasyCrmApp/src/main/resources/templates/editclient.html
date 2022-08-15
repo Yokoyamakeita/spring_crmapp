@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+<meta charset="UTF-8" th:remove="tag">
+</head>
+<body>
+
+	<!-- サイドバーの表示 -->
+	<div layout:fragment="sidebar"
+		th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+	<!-- コンテンツの表示 -->
+	<main layout:fragment="content" class="offcanvas-outside bg-light">
+		<div class="container-fluid">
+			<!-- トグルボタン -->
+			<div th:replace="~{fragments/sidebar :: toggler}"></div>
+
+			<div class="row">
+				<div class="col">
+
+					<div class="card shadow">
+						<div class="card-header">
+							<h6 class="text-navy my-2">取引先編集</h6>
+						</div>
+
+
+						<div class="card-body center-block">
+							<form th:action="@{/company/user/edit/{id}(id=*{id})}" th:object="${client}"
+								method="post">
+
+
+								<div class="mb-3">
+									<div class="d-grid gap-2 col-4 mx-auto"
+										style="margin-top: 30px">
+										<label class="form-label"> <span
+											class="badge bg-danger">必須</span> 会社名
+										</label> <select class="form-select" th:field="*{company}">
+											<th:block th:each="company:${@companyRepository.findAll()}">
+												<option th:value="${company.id}"
+													th:text="${company.companyName}"></option>
+											</th:block>
+										</select>
+									</div>
+								</div>
+
+
+								<div class="mb-3">
+									<div class="d-grid gap-2 col-4 mx-auto"
+										style="margin-top: 30px">
+										<label for="username" class="form-label"> <span
+											class="badge bg-danger">必須</span> お名前
+										</label> <input class="form-control col-xs-4" type="text"
+											th:errorclass="is-invalid" th:field="*{name}">
+										<div class="invalid-feedback" th:errors="*{name}"></div>
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<div class="d-grid gap-2 col-4 mx-auto"
+										style="margin-top: 30px">
+										<label for="indeutry" class="form-label"> <span
+											class="badge bg-danger">必須</span> メールアドレス
+										</label> <input class="form-control" type="text"
+											th:errorclass="is-invalid" th:field="*{mail}">
+										<div class="invalid-feedback" th:errors="*{mail}"></div>
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<div class="d-grid gap-2 col-4 mx-auto"
+										style="margin-top: 30px">
+										<label for="indeutry" class="form-label"> <span
+											class="badge bg-danger">必須</span> 部署名
+										</label> <input class="form-control" type="text"
+											th:errorclass="is-invalid" th:field="*{departmentName}">
+										<div class="invalid-feedback" th:errors="*{departmentName}"></div>
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<div class="d-grid gap-2 col-4 mx-auto"
+										style="margin-top: 30px">
+										<label for="indeutry" class="form-label"> <span
+											class="badge bg-danger">必須</span> お役職
+										</label> <input class="form-control" type="text"
+											th:errorclass="is-invalid" th:field="*{auth}">
+										<div class="invalid-feedback" th:errors="*{auth}"></div>
+									</div>
+								</div>
+
+
+								<div class="d-grid gap-2 col-4 mx-auto"
+									style="margin-top: 50px; margin-bottom: 30px">
+									<button class="btn btn-primary" type="submit">登録</button>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+</body>
+</html>

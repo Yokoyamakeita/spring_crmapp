@@ -1,0 +1,6 @@
+package com.example.form;
+
+@Data
+public class UserListForm {
+
+}

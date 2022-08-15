@@ -1,0 +1,12 @@
+package com.example.repository;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class HelloRepository {
+
+	@Autowired
+	private jdbcTemplete jdbcTemplete;
+	
+	
+}
